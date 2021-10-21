@@ -31,6 +31,7 @@ public class Container {
         busy = true;
         this.quantity += quantity;
         System.out.println(name + " libera "+ seed +"..." + this.quantity +"/"+amount);
+        busy = false;
         this.notify();
     }
 }

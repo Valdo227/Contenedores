@@ -18,12 +18,12 @@ public class Producer extends Thread {
         this.containers = containers;
     }
 
-    public void putSeed(int random) throws InterruptedException {
+    public synchronized void putSeed(int random) throws InterruptedException {
         Seed seed = seeds.get(random);
         System.out.println(name+ "Tratando de agregar...");
         for(Container container: containers){
             if(seed.name.equals(container.seed)){
-                if(!(container.amount == container.quantity)){
+                if(!(container.amount <= container.quantity)){
                     if(container.busy) {
                         System.out.println(name+ "Esperando...");
                         wait();
@@ -42,7 +42,6 @@ public class Producer extends Thread {
     public void run() {
         Random random = new Random();
         while(!Container.VerifyContainer(containers)){
-            System.out.println("Entré al while...");
             try {
                 int rand = random.nextInt(2);
                 putSeed(rand);
