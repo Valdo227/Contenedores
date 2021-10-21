@@ -27,11 +27,20 @@ public class Container {
         return full;
     }
 
-    public synchronized void setQuantity(int quantity,String name){
+    public void setQuantity(int quantity,String name){
         busy = true;
-        this.quantity += quantity;
-        System.out.println(name + " libera "+ seed +"..." + this.quantity +"/"+amount);
+        synchronized (this) {
+            if (this.quantity + quantity >= amount) {
+                System.out.println("El productor " + name + " agregó " + (amount - this.quantity) + "T de " + seed + " y se regresó con " + (amount - quantity) + "T");
+                System.out.println ("\033[33mEl contendedor de "+seed + " se llenó (" + amount + "T)\u001B[0m");
+                this.quantity = amount;
+
+            } else {
+                this.quantity += quantity;
+                System.out.println("El productor " + name + " agregó " + quantity + "T de " + seed + " (" + this.quantity + "/" + amount + ")");
+            }
+            notify();
+        }
         busy = false;
-        this.notify();
     }
 }

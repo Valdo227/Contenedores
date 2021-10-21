@@ -8,7 +8,7 @@ import java.util.Random;
 public class Producer extends Thread {
 
     List<Seed> seeds = new ArrayList<>();
-    List<Container> containers;
+    final List<Container> containers;
     String name;
 
     public Producer(String name,String seed1,int amount1,String seed2,int amount2, List<Container> containers){
@@ -18,18 +18,17 @@ public class Producer extends Thread {
         this.containers = containers;
     }
 
-    public synchronized void putSeed(int random) throws InterruptedException {
+    public void putSeed(int random) throws InterruptedException {
         Seed seed = seeds.get(random);
-        System.out.println(name+ "Tratando de agregar...");
         for(Container container: containers){
-            if(seed.name.equals(container.seed)){
-                if(!(container.amount <= container.quantity)){
-                    if(container.busy) {
-                        System.out.println(name+ "Esperando...");
-                        wait();
+            if (seed.name.equals(container.seed)) {
+                synchronized (container) {
+                    if (!(container.amount == container.quantity)) {
+                        if (container.busy) {
+                            wait();
+                        }
+                        container.setQuantity(seed.amount, name);
                     }
-                    container.setQuantity(seed.amount,name);
-                    System.out.println(name+  " agregó "+seed.amount+"T de "+ seed.name+" en el contenedor");
                 }
                 break;
             }
@@ -50,6 +49,7 @@ public class Producer extends Thread {
                 e.printStackTrace();
             }
         }
+        System.out.println(name + " ha terminado de surtir");
     }
 
 }
