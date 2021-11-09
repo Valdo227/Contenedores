@@ -26,8 +26,12 @@ public class Container {
         return full;
     }
 
+    public static boolean verifyContainerEmpty(List<Container> containers) {
+        return containers.stream().anyMatch(container -> container.quantity == 0);
+    }
+
     public synchronized void setQuantity(int quantity, String name) {
-        System.out.println("entró " + name + " " + this.seed);
+        System.out.println("Entró productor " + name + " " + this.seed);
 
         if (this.quantity + quantity >= amount) {
             System.out.println("El productor " + name + " agregó " + (amount - this.quantity) + "T de " + seed + " y se regresó con " + (quantity - (amount - this.quantity)) + "T");
@@ -38,24 +42,33 @@ public class Container {
             this.quantity += quantity;
             System.out.println("El productor " + name + " agregó " + quantity + "T de " + seed + " (" + this.quantity + "/" + amount + ")");
         }
-        System.out.println("salio " + name + " " + this.seed);
+        System.out.println("salio productor" + name + " " + this.seed);
         notifyAll();
     }
 
-    public synchronized void getQuantity(Seed seed, String name) {
-        System.out.println("entró a comprar" + name + " " + this.seed);
+    public synchronized void getQuantity(Seed seed, String name) throws InterruptedException {
+        System.out.println("Entró cliente " + name + " a comprar " + this.seed);
 
-        if (this.quantity - seed.amount <= 0) {
-            System.out.println("El cliente " + name + " compró " + (seed.amount + (this.quantity - seed.amount)) + "T de " + seed + " y le faltaron " + (seed.amount - this.quantity) + "T");
-            System.out.println("\033[33mEl contendedor de " + seed + " se vació");
+        if (this.quantity - seed.amount == 0) {
+            System.out.println("El cliente " + name + " compró " + (seed.amount + (this.quantity - seed.amount)) + "T de " + seed.name);
+            System.out.println("\033[33mEl contendedor de " + seed.name + " se vació\u001B[0m");
             this.quantity = 0;
-            seed.amount -= seed.amount;
+            seed.amount = 0;
+            notifyAll();
+            wait();
+        } else if (this.quantity - seed.amount < 0) {
+            System.out.println("El cliente " + name + " compró " + (seed.amount + (this.quantity - seed.amount)) + "T de " + seed.name + " y le faltaron " + (seed.amount - this.quantity) + "T");
+            System.out.println("\033[33mEl contendedor de " + seed.name + " se vació\u001B[0m");
+            this.quantity = 0;
+            seed.amount -= this.quantity;
+            notifyAll();
+            wait();
         } else {
             this.quantity -= seed.amount;
-            System.out.println("El cliente " + name + " compró " + seed.amount + "T de " + seed + " (" + this.quantity + "/" + amount + ")");
+            System.out.println("El cliente " + name + " compró " + seed.amount + "T de " + seed.name + " (" + this.quantity + "/" + amount + ")");
             seed.amount = 0;
+            notifyAll();
         }
         System.out.println("salió el cliente " + name + " " + this.seed);
-        notifyAll();
     }
 }

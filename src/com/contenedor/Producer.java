@@ -19,7 +19,7 @@ public class Producer extends Thread {
     }
 
     public void putSeed() throws InterruptedException {
-        System.out.println("Intentó " + name);
+        System.out.println("Intentó surtir " + name);
         for (Container container : containers)
             synchronized (containers) {
                 for (Seed seed : seeds)
@@ -39,7 +39,7 @@ public class Producer extends Thread {
                 e.printStackTrace();
             }
         }
-        System.out.println(name + " ha terminado de surtir");
+        System.out.println("Productor " + name + " ha terminado de surtir");
     }
 
 }

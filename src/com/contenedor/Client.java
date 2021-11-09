@@ -17,8 +17,8 @@ public class Client extends Thread {
         return seeds.stream().anyMatch(seed -> seed.amount > 0);
     }
 
-    public void buy() {
-        System.out.println("Intentó comprar" + name);
+    public void buy() throws InterruptedException {
+        System.out.println("Intentó comprar " + name);
         for (Container container : containers)
             synchronized (containers) {
                 for (Seed seed : seeds)
@@ -38,6 +38,6 @@ public class Client extends Thread {
                 e.printStackTrace();
             }
         }
-        System.out.println(name + " ha terminado de comprar");
+        System.out.println("Cliente " + name + " ha terminado de comprar");
     }
 }
