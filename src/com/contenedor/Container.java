@@ -42,19 +42,20 @@ public class Container {
         notifyAll();
     }
 
-    public synchronized void getQuantity(int quantity, String name) {
+    public synchronized void getQuantity(Seed seed, String name) {
         System.out.println("entró a comprar" + name + " " + this.seed);
 
-        if (this.quantity - quantity >= amount) {
-            System.out.println("El cliente " + name + " compró " + (amount - this.quantity) + "T de " + seed + " y se regresó con " + (quantity - (amount - this.quantity)) + "T");
-            System.out.println("\033[33mEl contendedor de " + seed + " se llenó (" + amount + "T)\u001B[0m");
-            this.quantity = amount;
-
+        if (this.quantity - seed.amount <= 0) {
+            System.out.println("El cliente " + name + " compró " + (seed.amount + (this.quantity - seed.amount)) + "T de " + seed + " y le faltaron " + (seed.amount - this.quantity) + "T");
+            System.out.println("\033[33mEl contendedor de " + seed + " se vació");
+            this.quantity = 0;
+            seed.amount -= seed.amount;
         } else {
-            this.quantity += quantity;
-            System.out.println("El productor " + name + " agregó " + quantity + "T de " + seed + " (" + this.quantity + "/" + amount + ")");
+            this.quantity -= seed.amount;
+            System.out.println("El cliente " + name + " compró " + seed.amount + "T de " + seed + " (" + this.quantity + "/" + amount + ")");
+            seed.amount = 0;
         }
-        System.out.println("salio " + name + " " + this.seed);
+        System.out.println("salió el cliente " + name + " " + this.seed);
         notifyAll();
     }
 }

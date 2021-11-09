@@ -14,7 +14,7 @@ public class Client extends Thread {
     }
 
     public boolean checkList() {
-        return seeds.stream().anyMatch(seed -> seed.amount == 0);
+        return seeds.stream().anyMatch(seed -> seed.amount > 0);
     }
 
     public void buy() {
@@ -24,7 +24,7 @@ public class Client extends Thread {
                 for (Seed seed : seeds)
                     if (seed.name.equals(container.seed))
                         if (seed.amount != 0 )
-                            container.getQuantity(seed.amount, name);
+                            container.getQuantity(seed, name);
             }
     }
 
@@ -32,7 +32,8 @@ public class Client extends Thread {
     public void run() {
         while (checkList()) {
             try {
-
+                buy();
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
