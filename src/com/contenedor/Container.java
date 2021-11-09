@@ -41,4 +41,20 @@ public class Container {
         System.out.println("salio " + name + " " + this.seed);
         notifyAll();
     }
+
+    public synchronized void getQuantity(int quantity, String name) {
+        System.out.println("entró a comprar" + name + " " + this.seed);
+
+        if (this.quantity - quantity >= amount) {
+            System.out.println("El cliente " + name + " compró " + (amount - this.quantity) + "T de " + seed + " y se regresó con " + (quantity - (amount - this.quantity)) + "T");
+            System.out.println("\033[33mEl contendedor de " + seed + " se llenó (" + amount + "T)\u001B[0m");
+            this.quantity = amount;
+
+        } else {
+            this.quantity += quantity;
+            System.out.println("El productor " + name + " agregó " + quantity + "T de " + seed + " (" + this.quantity + "/" + amount + ")");
+        }
+        System.out.println("salio " + name + " " + this.seed);
+        notifyAll();
+    }
 }
