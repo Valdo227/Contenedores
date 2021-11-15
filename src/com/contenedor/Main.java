@@ -29,32 +29,26 @@ public class Main {
         seedsClient3.add(new Seed("Maíz", 20));
         seedsClient3.add(new Seed("Trigo", 10));
 
+        ThreadGroup clients = new ThreadGroup("clients");
+
         Client client1 = new Client("Valdo", seedsClient1, containers);
         Client client2 = new Client("Hiram", seedsClient2, containers);
-        Client client3 = new Client("Junapa", seedsClient3, containers);
+        Client client3 = new Client("Juanpa", seedsClient3, containers);
+
+        Thread c1 = new Thread(clients,client1,"Valdo");
+        Thread c2 = new Thread(clients,client2, "Hiram");
+        Thread c3 = new Thread(clients,client3, "Juanpa");
 
         System.out.println("Los productores comienzan el día");
-        boolean first = true;
-        do {
-            producer1.start();
-            producer2.start();
-            producer3.start();
-            producer4.start();
 
-            while (producer1.isAlive() || producer2.isAlive() || producer3.isAlive() || producer4.isAlive()) {
-            }
-            System.out.println("\033[33mTodos los contenedores se han llenado\u001B[0m");
+        producer1.start();
+        producer2.start();
+        producer3.start();
+        producer4.start();
 
-            if (first) {
-                client1.start();
-                client2.start();
-                client3.start();
-                first = false;
-            }
-
-            while (!Container.verifyContainerEmpty(containers)) {
-            }
-        } while ((client1.isAlive() || client2.isAlive() || client3.isAlive()));
+        c1.start();
+        c2.start();
+        c3.start();
 
     }
 }

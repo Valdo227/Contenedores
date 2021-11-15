@@ -1,9 +1,7 @@
 package com.contenedor;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Producer extends Thread {
 
@@ -31,15 +29,23 @@ public class Producer extends Thread {
 
     @Override
     public void run() {
-        while (!Container.VerifyContainer(containers)) {
-            try {
-                putSeed();
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        while(true) {
+            if(Container.verifyContainerEmpty(containers)) {
+                while (!Container.VerifyContainer(containers)) {
+                    try {
+                        putSeed();
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                synchronized (containers) {
+                    containers.notifyAll();
+                }
+                System.out.println("\033[33mProductor " + name + " ha terminado de surtir\u001B[0m");
             }
         }
-        System.out.println("Productor " + name + " ha terminado de surtir");
+
     }
 
 }

@@ -1,5 +1,6 @@
 package com.contenedor;
 
+import java.io.Console;
 import java.util.List;
 
 public class Client extends Thread {
@@ -22,9 +23,12 @@ public class Client extends Thread {
         for (Container container : containers)
             synchronized (containers) {
                 for (Seed seed : seeds)
-                    if (seed.name.equals(container.seed))
-                        if (seed.amount != 0 )
-                            container.getQuantity(seed, name);
+                    if (seed.name.equals(container.seed)) {
+                        if (seed.amount == 0) {
+                            this.getThreadGroup().wait();
+                        }
+                        container.getQuantity(seed, name);
+                    }
             }
     }
 
@@ -32,6 +36,7 @@ public class Client extends Thread {
     public void run() {
         while (checkList()) {
             try {
+                System.out.println(this.getThreadGroup().getName());
                 buy();
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

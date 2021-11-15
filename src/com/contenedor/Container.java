@@ -42,7 +42,7 @@ public class Container {
             this.quantity += quantity;
             System.out.println("El productor " + name + " agregó " + quantity + "T de " + seed + " (" + this.quantity + "/" + amount + ")");
         }
-        System.out.println("salio productor" + name + " " + this.seed);
+        System.out.println("salio productor " + name + " " + this.seed);
         notifyAll();
     }
 
