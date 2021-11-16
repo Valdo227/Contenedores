@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        /*
         List<Container> containers = new ArrayList<>();
         containers.add(new Container("Frijol", 15));
         containers.add(new Container("Maíz", 30));
@@ -44,5 +45,9 @@ public class Main {
         client2.start();
         client3.start();
 
+         */
+
     }
+
+
 }

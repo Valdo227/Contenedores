@@ -1,5 +1,6 @@
 package com.contenedor;
 
+import javax.swing.*;
 import java.util.List;
 
 public class Container {
@@ -11,11 +12,13 @@ public class Container {
     public static boolean busy = false;
     public static boolean open = false;
 
+    DefaultListModel listModel;
 
-    public Container(String seed, int amount) {
+    public Container(String seed, int amount, DefaultListModel listModel) {
         this.seed = seed;
         this.amount = amount;
         this.quantity = 0;
+        this.listModel = listModel;
     }
 
     public static boolean VerifyContainer(List<Container> containers) {
@@ -34,39 +37,39 @@ public class Container {
     }
 
     public void setQuantity(int quantity, String name) {
-        System.out.println("Entró productor " + name + " " + this.seed);
+        //listModel.add(listModel.size(),"Entró productor " + name + " " + this.seed);
 
         if (this.quantity + quantity >= amount) {
-            System.out.println("El productor " + name + " agregó " + (amount - this.quantity) + "T de " + seed + " y se regresó con " + (quantity - (amount - this.quantity)) + "T");
-            System.out.println("\033[33mEl contendedor de " + seed + " se llenó (" + amount + "T)\u001B[0m");
+            listModel.add(0,"El productor " + name + " agregó " + (amount - this.quantity) + "T de " + seed + " y se regresó con " + (quantity - (amount - this.quantity)) + "T");
+            //listModel.add(listModel.size(),"\033[33mEl contendedor de " + seed + " se llenó (" + amount + "T)\u001B[0m");
             this.quantity = amount;
 
         } else {
             this.quantity += quantity;
-            System.out.println("El productor " + name + " agregó " + quantity + "T de " + seed + " (" + this.quantity + "/" + amount + ")");
+            listModel.add(0,"El productor " + name + " agregó " + quantity + "T de " + seed + " (" + this.quantity + "/" + amount + ")");
         }
-        System.out.println("salio productor " + name + " " + this.seed);
+        //listModel.add(listModel.size(),"salio productor " + name + " " + this.seed);
     }
 
     public synchronized void getQuantity(Seed seed, String name) throws InterruptedException {
-        System.out.println("Entró cliente " + name + " a comprar " + this.seed);
+        listModel.add(0,"Entró cliente " + name + " a comprar " + this.seed);
 
         if (this.quantity - seed.amount == 0) {
-            System.out.println("El cliente " + name + " compró " + (seed.amount + (this.quantity - seed.amount)) + "T de " + seed.name);
-            System.out.println("\033[33mEl contendedor de " + seed.name + " se vació\u001B[0m");
+            listModel.add(0,"El cliente " + name + " compró " + (seed.amount) + "T de " + seed.name);
+            listModel.add(0,"El contendedor de " + seed.name + " se vació");
             this.quantity = 0;
             seed.amount = 0;
         } else if (this.quantity - seed.amount < 0) {
-            System.out.println("El cliente " + name + " compró " + (seed.amount + (this.quantity - seed.amount)) + "T de " + seed.name + " y le faltaron " + (seed.amount - this.quantity) + "T");
-            System.out.println("\033[33mEl contendedor de " + seed.name + " se vació\u001B[0m");
+            listModel.add(0,"El cliente " + name + " compró " + (seed.amount + (this.quantity - seed.amount)) + "T de " + seed.name + " y le faltaron " + (seed.amount - this.quantity) + "T");
+            listModel.add(0,"El contendedor de " + seed.name + " se vació");
             seed.amount -= this.quantity;
             this.quantity = 0;
 
         } else {
             this.quantity -= seed.amount;
-            System.out.println("El cliente " + name + " compró " + seed.amount + "T de " + seed.name + " (" + this.quantity + "/" + amount + ")");
+            listModel.add(0,"El cliente " + name + " compró " + seed.amount + "T de " + seed.name + " (" + this.quantity + "/" + amount + ")");
             seed.amount = 0;
         }
-        System.out.println("salió el cliente " + name + " " + this.seed);
+        listModel.add(0,"salió el cliente " + name + " " + this.seed);
     }
 }

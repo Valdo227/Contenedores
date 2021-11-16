@@ -1,11 +1,356 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.contenedor.Containers">
-  <grid id="27dc6" binding="panel1" layout-manager="GridBagLayout">
+  <grid id="27dc6" binding="panel1" layout-manager="GridLayoutManager" row-count="1" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="848" height="400"/>
+      <xy x="20" y="20" width="795" height="517"/>
     </constraints>
-    <properties/>
-    <border type="none"/>
-    <children/>
+    <properties>
+      <background color="-14210218"/>
+    </properties>
+    <border type="bevel-raised"/>
+    <children>
+      <grid id="e4058" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14803458"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="10d94" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="7"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="275" height="195"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-14867853"/>
+              <font name="Consolas" size="18"/>
+              <foreground color="-2698029"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="c2b48" binding="ProducersPanel" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-14867853"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="649b" binding="producer1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Productor 1">
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children/>
+                  </grid>
+                  <grid id="6eb47" binding="producer4" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Productor 4">
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children/>
+                  </grid>
+                  <grid id="4ca79" binding="producer3" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Productor 3 ">
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children/>
+                  </grid>
+                  <grid id="527c0" binding="producer2" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Productor 2">
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children/>
+                  </grid>
+                </children>
+              </grid>
+              <grid id="ee17" binding="clientsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-14867853"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="d394b" binding="client1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Valdo">
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children>
+                      <component id="b58a9" class="javax.swing.JLabel" binding="valdoLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Consolas" size="18"/>
+                          <foreground color="-2698029"/>
+                          <text value="0/0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="9a8ab" binding="client4" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Kath">
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children>
+                      <component id="70d24" class="javax.swing.JLabel" binding="juanpaLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Consolas" size="18"/>
+                          <foreground color="-2698029"/>
+                          <text value="0/0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="9fa61" binding="client2" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Hiram">
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children>
+                      <component id="d49ec" class="javax.swing.JLabel" binding="hiramLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Consolas" size="18"/>
+                          <foreground color="-2698029"/>
+                          <text value="0/0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="57185" binding="client3" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Juanpa">
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children>
+                      <component id="b10d2" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Consolas" size="18"/>
+                          <foreground color="-2698029"/>
+                          <text value="0/0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+              <grid id="d0e5c" binding="containersPanel" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-14867853"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="b5ba1" binding="container1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Frijol">
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children>
+                      <component id="6e1cb" class="javax.swing.JLabel" binding="frijolLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Consolas" size="18"/>
+                          <foreground color="-2698029"/>
+                          <text value="0/0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="d55ca" binding="container3" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Trigo">
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children>
+                      <component id="3962a" class="javax.swing.JLabel" binding="trigoLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Consolas" size="18"/>
+                          <foreground color="-2698029"/>
+                          <text value="0/0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="46e53" binding="container2" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14803458"/>
+                      <foreground color="-1"/>
+                    </properties>
+                    <border type="line" title="Maíz">
+                      <font/>
+                      <title-color color="-1"/>
+                      <color color="-6842988"/>
+                    </border>
+                    <children>
+                      <component id="7ef36" class="javax.swing.JLabel" binding="maizLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Consolas" size="18"/>
+                          <foreground color="-2698029"/>
+                          <text value="0/0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="7eaaf" binding="consolePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14210218"/>
+        </properties>
+        <border type="line" title="Consola">
+          <title-color color="-1"/>
+          <color color="-1"/>
+        </border>
+        <children>
+          <scrollpane id="e4dc5">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="8c57b" class="javax.swing.JList" binding="consoleList">
+                <constraints/>
+                <properties>
+                  <background color="-3280642"/>
+                  <foreground color="-14210218"/>
+                  <layoutOrientation value="0"/>
+                  <model/>
+                  <selectionBackground color="-3280642"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+    </children>
   </grid>
 </form>
