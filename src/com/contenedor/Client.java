@@ -1,6 +1,5 @@
 package com.contenedor;
 
-import java.io.Console;
 import java.util.List;
 
 public class Client extends Thread {
@@ -20,29 +19,35 @@ public class Client extends Thread {
 
     public void buy() throws InterruptedException {
         System.out.println("Intentó comprar " + name);
-        for (Container container : containers)
+        for (Container container : containers) {
             synchronized (containers) {
-                for (Seed seed : seeds)
+                if(Container.busy)
+                    containers.wait();
+                Container.busy = true;
+                for (Seed seed : seeds) {
                     if (seed.name.equals(container.seed)) {
-                        if (seed.amount == 0) {
-                            this.getThreadGroup().wait();
-                        }
-                        container.getQuantity(seed, name);
+                        if (seed.amount != 0)
+                            container.getQuantity(seed, name);
                     }
+                }
+                Container.busy = false;
+                containers.notify();
             }
+        }
     }
 
     @Override
     public void run() {
         while (checkList()) {
-            try {
-                System.out.println(this.getThreadGroup().getName());
-                buy();
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if(Container.open) {
+                try {
+                    buy();
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        System.out.println("Cliente " + name + " ha terminado de comprar");
+        System.out.println("\033[33mCliente " + name + " ha terminado de comprar\u001B[0m");
     }
 }

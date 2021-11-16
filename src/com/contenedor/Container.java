@@ -8,6 +8,9 @@ public class Container {
     int amount;
     int quantity;
     public static boolean full = false;
+    public static boolean busy = false;
+    public static boolean open = false;
+
 
     public Container(String seed, int amount) {
         this.seed = seed;
@@ -30,7 +33,7 @@ public class Container {
         return containers.stream().anyMatch(container -> container.quantity == 0);
     }
 
-    public synchronized void setQuantity(int quantity, String name) {
+    public void setQuantity(int quantity, String name) {
         System.out.println("Entró productor " + name + " " + this.seed);
 
         if (this.quantity + quantity >= amount) {
@@ -43,7 +46,6 @@ public class Container {
             System.out.println("El productor " + name + " agregó " + quantity + "T de " + seed + " (" + this.quantity + "/" + amount + ")");
         }
         System.out.println("salio productor " + name + " " + this.seed);
-        notifyAll();
     }
 
     public synchronized void getQuantity(Seed seed, String name) throws InterruptedException {
@@ -54,20 +56,16 @@ public class Container {
             System.out.println("\033[33mEl contendedor de " + seed.name + " se vació\u001B[0m");
             this.quantity = 0;
             seed.amount = 0;
-            notifyAll();
-            wait();
         } else if (this.quantity - seed.amount < 0) {
             System.out.println("El cliente " + name + " compró " + (seed.amount + (this.quantity - seed.amount)) + "T de " + seed.name + " y le faltaron " + (seed.amount - this.quantity) + "T");
             System.out.println("\033[33mEl contendedor de " + seed.name + " se vació\u001B[0m");
-            this.quantity = 0;
             seed.amount -= this.quantity;
-            notifyAll();
-            wait();
+            this.quantity = 0;
+
         } else {
             this.quantity -= seed.amount;
             System.out.println("El cliente " + name + " compró " + seed.amount + "T de " + seed.name + " (" + this.quantity + "/" + amount + ")");
             seed.amount = 0;
-            notifyAll();
         }
         System.out.println("salió el cliente " + name + " " + this.seed);
     }

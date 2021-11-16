@@ -11,7 +11,7 @@ public class Containers {
         frame.setContentPane(new Containers().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setMinimumSize(new Dimension(480, 480));
+        frame.setMinimumSize(new Dimension(800, 480));
         frame.setVisible(true);
     }
 }

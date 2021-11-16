@@ -20,10 +20,16 @@ public class Producer extends Thread {
         System.out.println("Intentó surtir " + name);
         for (Container container : containers)
             synchronized (containers) {
-                for (Seed seed : seeds)
+                if(Container.busy)
+                    containers.wait();
+                Container.busy = true;
+                for (Seed seed : seeds) {
                     if (seed.name.equals(container.seed))
                         if (!(container.amount == container.quantity))
                             container.setQuantity(seed.amount, name);
+                }
+                Container.busy = false;
+                containers.notify();
             }
     }
 
@@ -32,6 +38,7 @@ public class Producer extends Thread {
         while(true) {
             if(Container.verifyContainerEmpty(containers)) {
                 while (!Container.VerifyContainer(containers)) {
+                    Container.open = false;
                     try {
                         putSeed();
                         Thread.sleep(1000);
@@ -39,9 +46,7 @@ public class Producer extends Thread {
                         e.printStackTrace();
                     }
                 }
-                synchronized (containers) {
-                    containers.notifyAll();
-                }
+                Container.open = true;
                 System.out.println("\033[33mProductor " + name + " ha terminado de surtir\u001B[0m");
             }
         }

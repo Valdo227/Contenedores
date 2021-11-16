@@ -29,15 +29,9 @@ public class Main {
         seedsClient3.add(new Seed("Maíz", 20));
         seedsClient3.add(new Seed("Trigo", 10));
 
-        ThreadGroup clients = new ThreadGroup("clients");
-
         Client client1 = new Client("Valdo", seedsClient1, containers);
         Client client2 = new Client("Hiram", seedsClient2, containers);
         Client client3 = new Client("Juanpa", seedsClient3, containers);
-
-        Thread c1 = new Thread(clients,client1,"Valdo");
-        Thread c2 = new Thread(clients,client2, "Hiram");
-        Thread c3 = new Thread(clients,client3, "Juanpa");
 
         System.out.println("Los productores comienzan el día");
 
@@ -46,9 +40,9 @@ public class Main {
         producer3.start();
         producer4.start();
 
-        c1.start();
-        c2.start();
-        c3.start();
+        client1.start();
+        client2.start();
+        client3.start();
 
     }
 }
