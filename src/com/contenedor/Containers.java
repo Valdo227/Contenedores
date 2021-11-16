@@ -27,8 +27,9 @@ public class Containers {
     private JLabel trigoLabel;
     private JLabel valdoLabel;
     private JLabel hiramLabel;
-    private JLabel juanpaLabel;
+    private JLabel kathLabel;
     private JPanel client3;
+    private JLabel juanpaLabel;
 
     Producer p1;
     Producer p2;
@@ -47,9 +48,11 @@ public class Containers {
         consoleList.setModel(listModel);
 
         java.util.List<Container> containers = new ArrayList<>();
-        containers.add(new Container("Frijol", 15,listModel));
-        containers.add(new Container("Maíz", 30,listModel));
-        containers.add(new Container("Trigo", 25,listModel));
+        containers.add(new Container("Frijol", 15,listModel,container1, frijolLabel));
+        containers.add(new Container("Maíz", 30,listModel, container2, maizLabel));
+        containers.add(new Container("Trigo", 25,listModel, container3,trigoLabel));
+
+
 
         p1 = new Producer("1", "Frijol", 3, "Maíz", 2, containers, producer1);
         p2 = new Producer("2", "Frijol", 4, "Trigo", 2, containers, producer2);
@@ -64,18 +67,18 @@ public class Containers {
         seedsClient2.add(new Seed("Maíz", 20));
 
         java.util.List<Seed> seedsClient3 = new ArrayList<>();
-        seedsClient2.add(new Seed("Frijol", 15));
-        seedsClient2.add(new Seed("Maíz", 10));
+        seedsClient3.add(new Seed("Frijol", 15));
+        seedsClient3.add(new Seed("Maíz", 10));
 
         List<Seed> seedsClient4 = new ArrayList<>();
-        seedsClient3.add(new Seed("Frijol", 10));
-        seedsClient3.add(new Seed("Maíz", 20));
-        seedsClient3.add(new Seed("Trigo", 10));
+        seedsClient4.add(new Seed("Frijol", 10));
+        seedsClient4.add(new Seed("Maíz", 20));
+        seedsClient4.add(new Seed("Trigo", 10));
 
-        c1 = new Client("Valdo", seedsClient1, containers, client1);
-        c2 = new Client("Hiram", seedsClient2, containers, client2);
-        c3 = new Client("Juanpa", seedsClient3, containers, client3);
-        c4 = new Client("Kath", seedsClient4, containers, client4);
+        c1 = new Client("Valdo", seedsClient1, containers, client1,valdoLabel);
+        c2 = new Client("Hiram", seedsClient2, containers, client2,hiramLabel);
+        c3 = new Client("Juanpa", seedsClient3, containers, client3,juanpaLabel);
+        c4 = new Client("Kath", seedsClient4, containers, client4,kathLabel);
 
         listModel.add(listModel.size(),"Los productores comienzan el día");
         //("Los productores comienzan el día");
@@ -98,7 +101,7 @@ public class Containers {
         frame.setContentPane(new Containers().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setMinimumSize(new Dimension(800, 480));
+        frame.setMinimumSize(new Dimension(1000, 480));
         frame.setVisible(true);
 
     }

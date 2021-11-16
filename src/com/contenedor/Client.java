@@ -2,6 +2,7 @@ package com.contenedor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client extends Thread {
@@ -10,12 +11,14 @@ public class Client extends Thread {
     final List<Container> containers;
 
     JPanel panel;
+    JLabel label;
 
-    public Client(String name, List<Seed> seeds, List<Container> containers, JPanel panel) {
+    public Client(String name, List<Seed> seeds, List<Container> containers, JPanel panel, JLabel label) {
         this.name = name;
         this.seeds = seeds;
         this.containers = containers;
         this.panel = panel;
+        this.label = label;
     }
 
     public boolean checkList() {
@@ -26,6 +29,7 @@ public class Client extends Thread {
 
         System.out.println("Intentó comprar " + name);
         panel.setBackground(Color.yellow);
+        label.setForeground(Color.black);
         Thread.sleep(2000);
         for (Container container : containers) {
             synchronized (containers) {
@@ -37,10 +41,11 @@ public class Client extends Thread {
                         if (seed.amount != 0){
                             container.getQuantity(seed, name);
                             panel.setBackground(Color.green);
+                            label.setForeground(Color.black);
                             Thread.sleep(500);
                         }
-                        else
-                            panel.setBackground(Color.blue);
+                        panel.setBackground(Color.blue);
+                        label.setForeground(Color.white);
 
                     }
                 }
@@ -53,12 +58,11 @@ public class Client extends Thread {
     @Override
     public void run() {
         while (checkList()) {
+            label.setText("Esperando");
             if(Container.open) {
+                label.setText("Comprando");
                 try {
                     buy();
-                    if(!checkList()){
-                        System.out.println("\033[33mCliente " + name + " ha terminado de comprar\u001B[0m");
-                    }
                     Thread.sleep(500);
                     panel.setBackground(Color.blue);
                 } catch (InterruptedException e) {
@@ -66,5 +70,7 @@ public class Client extends Thread {
                 }
             }
         }
+        label.setText("Acabó");
+
     }
 }

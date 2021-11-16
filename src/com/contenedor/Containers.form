@@ -136,8 +136,8 @@
                         </constraints>
                         <properties>
                           <font name="Consolas" size="18"/>
-                          <foreground color="-2698029"/>
-                          <text value="0/0"/>
+                          <foreground color="-1"/>
+                          <text value=""/>
                         </properties>
                       </component>
                     </children>
@@ -156,14 +156,14 @@
                       <color color="-6842988"/>
                     </border>
                     <children>
-                      <component id="70d24" class="javax.swing.JLabel" binding="juanpaLabel">
+                      <component id="70d24" class="javax.swing.JLabel" binding="kathLabel">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Consolas" size="18"/>
-                          <foreground color="-2698029"/>
-                          <text value="0/0"/>
+                          <foreground color="-1"/>
+                          <text value=""/>
                         </properties>
                       </component>
                     </children>
@@ -188,8 +188,8 @@
                         </constraints>
                         <properties>
                           <font name="Consolas" size="18"/>
-                          <foreground color="-2698029"/>
-                          <text value="0/0"/>
+                          <foreground color="-1"/>
+                          <text value=""/>
                         </properties>
                       </component>
                     </children>
@@ -208,14 +208,14 @@
                       <color color="-6842988"/>
                     </border>
                     <children>
-                      <component id="b10d2" class="javax.swing.JLabel">
+                      <component id="b10d2" class="javax.swing.JLabel" binding="juanpaLabel">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Consolas" size="18"/>
-                          <foreground color="-2698029"/>
-                          <text value="0/0"/>
+                          <foreground color="-1"/>
+                          <text value=""/>
                         </properties>
                       </component>
                     </children>
@@ -252,8 +252,8 @@
                         </constraints>
                         <properties>
                           <font name="Consolas" size="18"/>
-                          <foreground color="-2698029"/>
-                          <text value="0/0"/>
+                          <foreground color="-1"/>
+                          <text value="0/15"/>
                         </properties>
                       </component>
                     </children>
@@ -278,8 +278,8 @@
                         </constraints>
                         <properties>
                           <font name="Consolas" size="18"/>
-                          <foreground color="-2698029"/>
-                          <text value="0/0"/>
+                          <foreground color="-1"/>
+                          <text value="0/25"/>
                         </properties>
                       </component>
                     </children>
@@ -305,8 +305,8 @@
                         </constraints>
                         <properties>
                           <font name="Consolas" size="18"/>
-                          <foreground color="-2698029"/>
-                          <text value="0/0"/>
+                          <foreground color="-1"/>
+                          <text value="0/30"/>
                         </properties>
                       </component>
                     </children>

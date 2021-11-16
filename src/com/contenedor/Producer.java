@@ -10,7 +10,6 @@ public class Producer extends Thread {
     List<Seed> seeds = new ArrayList<>();
     final List<Container> containers;
     String name;
-
     JPanel panel;
 
     public Producer(String name, String seed1, int amount1, String seed2, int amount2, List<Container> containers, JPanel panel) {
@@ -22,7 +21,6 @@ public class Producer extends Thread {
     }
 
     public void putSeed() throws InterruptedException {
-        System.out.println("Intentó surtir " + name);
         panel.setBackground(Color.yellow);
         Thread.sleep(2000);
         for (Container container : containers)
@@ -39,8 +37,7 @@ public class Producer extends Thread {
                             panel.setBackground(Color.green);
                             Thread.sleep(500);
                         }
-                        else
-                            panel.setBackground(Color.blue);
+                        panel.setBackground(Color.blue);
                 }
                 Container.busy = false;
                 containers.notify();
@@ -62,7 +59,6 @@ public class Producer extends Thread {
                     }
                 }
                 Container.open = true;
-                System.out.println("\033[33mProductor " + name + " ha terminado de surtir\u001B[0m");
             }
         }
 
