@@ -42,7 +42,6 @@ public class Container {
     }
 
     public void setQuantity(int quantity, String name) throws InterruptedException  {
-        //listModel.add(listModel.size(),"Entró productor " + name + " " + this.seed);
         panel.setBackground(Color.green);
         label.setForeground(Color.black);
         if (this.quantity + quantity >= amount) {
@@ -80,7 +79,7 @@ public class Container {
             seed.amount = 0;
         }
         label.setText(this.quantity + "/" + amount);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         panel.setBackground(Color.blue);
         label.setForeground(Color.white);
     }

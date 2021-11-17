@@ -27,7 +27,6 @@ public class Client extends Thread {
 
     public void buy() throws InterruptedException {
 
-        System.out.println("Intentó comprar " + name);
         panel.setBackground(Color.yellow);
         label.setForeground(Color.black);
         Thread.sleep(2000);

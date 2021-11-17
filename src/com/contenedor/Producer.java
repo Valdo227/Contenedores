@@ -22,7 +22,7 @@ public class Producer extends Thread {
 
     public void putSeed() throws InterruptedException {
         panel.setBackground(Color.yellow);
-        Thread.sleep(2000);
+        Thread.sleep(500);
         for (Container container : containers)
             synchronized (containers) {
                 if(Container.busy) {
@@ -35,7 +35,7 @@ public class Producer extends Thread {
                         if (!(container.amount == container.quantity)) {
                             container.setQuantity(seed.amount, name);
                             panel.setBackground(Color.green);
-                            Thread.sleep(500);
+                            Thread.sleep(1000);
                         }
                         panel.setBackground(Color.blue);
                 }
@@ -52,8 +52,6 @@ public class Producer extends Thread {
                     Container.open = false;
                     try {
                         putSeed();
-                        Thread.sleep(500);
-                        panel.setBackground(Color.blue);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
